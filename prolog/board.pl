@@ -4,26 +4,40 @@
 
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_session)).
+:- use_module(library(http/html_head)).
 
-board_size(20, 20).
+:- use_module(game, [player_location/3, board_tile/3]).
 
-% TODO use setof's group-by to make nested lists of T
+board_size(40, 20). % NumCols, NumRows
+
+:- html_resource(style, [virtual,
+                         requires('/static/css/style.css')]).
+
 board -->
+    html_requires('/static/css/style.css'),
+    html_requires('/static/js/player.js'),
     { board_size(NumCols, NumRows),
       setof(X, between(1, NumCols, X), Row),
-      setof(Y-Row, between(1, NumRows, Y), Board)
+      setof(Y-Row, between(1, NumRows, Y), Board),
+      gtrace
     },
-    html(table(\rows(Board))).
+    html([\rows(Board),\objects]).
 
 rows([]) --> [].
 rows([Y-Row |More]) -->
-    html([tr(\row(Y, Row)) | \rows(More)]).
+    html([div(class(row), \row(Y, Row))]),
+    html(\rows(More)).
 
 row(_, []) --> [].
 row(Y, [X | More]) -->
-    {(   http_session_data(board(Y, X, T))
-    ;   T = grass
-    )},
-    html(td(img(src=T+".png"))),
+    {board_tile(Y, X, T) },
+    html(img(src="/static/img/"+T+".png")),
     row(Y, More).
+
+
+objects -->
+    { b_getval(current_session, S),
+      player_location(S, X, Y) },
+    html(img([class(object), style("left: ~dpx; top: ~dpx;"-[X,Y]), src("/static/img/player-r.png")], [])).
+
 

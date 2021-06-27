@@ -1,54 +1,172 @@
 :- module(game, [
-  get_state/2,
-  init_global/0,
-  make_player_inited/1 % +S inited
+  mutate/2,
+  create_chr_thread/0,
+  player_location/3,
+  board_tile/3
 ]).
 
 :- use_module(library(chr)).
+:- use_module(library(http/http_session)).
+:- use_module(library(http/html_write)).
+:- use_module(board).
 
 :- chr_constraint
-  cur_ticks/2,            % session, ticks         the current time in ticks for session s
-  get_ticks/2,            % session, Ticks         transient getter of the current ticks
-  days_go_by/2,           % session, ticks         increment the current time (and make world go)
-  reset_time/1,           % session                reset the current time to start
-
-  chr_reset/1,            % session                transient reset the game state
-  inited/1,               % session                exists if this session initialized
-  make_player_inited/1,   % session                transient idempotic insure session inited
-
-  act/2,                  % session, actionname    transient, causes this action to happen
-  potential_action/1,     % actionname             same as known_action but as CHR constraint
-  get_available_actions/2, % session, ActionName   transient get all actions we can do now
-  collect_available_actions/2, % session, Actions  transient, after we've made available_actions collect them
-  available_action/2,     % session, actionname     transient this action is available
-  acty_done/2,            % session, actyname      simple one time activities. succeeds if this acty done
-  acty/2,                 % session, actyname      record we did this acty
+  chr_key/2,
+  player_loc/3,   % S, X, Y
+  get_player_loc/3,
+  begin_game/1,
+  tile/4,
+  get_tile/4.
 
 
-  thing/3,               % session, type, status   an individual object
-  count_things/3,        % session, type, Count    return the count of things
-  set_init_inventory/1,  % session                 transient create the initial inventory
+player_loc(S, _, _) \ begin_game(S) <=> true.
 
-  news/2,                % session, news           the news for this turn
-  get_news/2.            % session, News           getter for this turns news
+begin_game(S) <=> player_loc(S, 128, 128).
 
-get_state(S, Response) :-
-    (   get_state_(S, Response)
-    ->  true
-    ;   gtrace
-    ).
-get_state_(_S, _{ foo: 7}). % :-
-   %  b_setval(session, S). S is the session #
+chr_key(S, 38), player_loc(S, X, Y) <=> NX is X + 64, player_loc(S, NX, Y).
+chr_key(_, _) <=> true.
+
+player_loc(S, X, Y) \ get_player_loc(S, NX, NY) <=> NX = X, NY = Y.
+tile(S, R, C, T) \ get_tile(S, R, C, NT) <=> T = NT.
+
+player_location(S, X, Y) :-
+    get_player_loc(S, X, Y).
+
+board_tile(R, C, T) :-
+    b_getval(current_session, S),
+    get_tile(S, R, C, T).
+board_tile(_, _, grass).
+
 
 		 /*******************************
-		 * Global initialization.
-		 *
-		 * Things that happen once at startup.
-		 *
+		 * Debug help                   *
 		 *******************************/
-init_global. % :-
-%  setof(X, known_action(X), List),
-%  maplist(potential_action, List).
+debug_constraints(Where) :-
+    find_chr_constraint(X),
+    debug(constraint(Where), '~w', [X]),
+    fail.
+debug_constraints(_).
+
+		 /*******************************
+		 *  Thread Component            *
+		 *******************************/
+
+:- dynamic thread_name/2.
+
+create_chr_thread :-
+   retractall(thread_name(_,_)),
+   gensym(sub, Sub),
+   gensym(par, Par),
+   gensym(chr, Chr),
+   asserta(thread_name(sub, Sub)),
+   asserta(thread_name(par, Par)),
+   asserta(thread_name(chr, Chr)),
+   message_queue_create(_, [ alias(Sub) ]),
+   message_queue_create(_, [ alias(Par) ]),
+   thread_create((init_global, polling_sub), _, [ alias(Chr),
+           at_exit(debug(lines, 'CHR thread exited', []))]).
+
+polling_sub :-
+   % listen for new message on `sub` queue
+   thread_name(sub, Sub),
+   thread_get_message(Sub, sync(ActionCHR, ResultCHR)),
+   debug_constraints(polling_sub),
+   % do the actual constraint call
+   (   call(ActionCHR)
+   ;
+       debug(constraint(polling_sub),
+             'action constraint ~w failed unexpectedly~n',
+             [ActionCHR]),
+       gtrace
+   ),
+   debug_constraints(polling_sub),
+   % get the result using the get_foo pattern
+   strip_module(ResultCHR, M, P),
+   P =.. List,
+   append(StubList, [_], List),
+   append(StubList, [Result], CallMeList),
+   CallMe =.. CallMeList,
+   (   call(M:CallMe)
+   ;
+       debug(constraint(polling_sub),
+             'result constraint ~w failed unexpectedly~n',
+             [ResultCHR]),
+       gtrace
+   ),
+   !, % nondet calls not allowed
+   % send it back to the `par` message queue
+   thread_name(par, Par),
+   thread_send_message(Par, Result),
+   % repeat
+   polling_sub.
+
+:- meta_predicate do_in_chr_thread(0, 0).
+
+%!  do_in_chr_thread(+ActionCHR:chr_constraint,
+%!         +ResultCHR:chr_constraint) is det
+%
+%   queries ActionCHR in the chr thread, which must be
+%   grounded chr_constraint or prolog predicate,
+%   then calls ResultCHR, whose last argument must be unbound.
+%   the last argument will be bound as if a direct chr call
+%   was made.
+%
+% eg to touch the egg to the pan and then get the egg's costume do
+% do_in_chr_thread(touch(S, egg, pan), get_costume(S, egg, Costume))
+%
+% Note that these are effectively called in once/1
+%
+do_in_chr_thread(ActionCHR, ResultCHR) :-
+   ResultCHR =.. List,
+   append(_, [Result], List),
+   thread_name(sub, Sub),
+   thread_send_message(Sub, sync(ActionCHR, ResultCHR)),
+   thread_name(par, Par),
+   thread_get_message(Par, Result).
+
+:- debug(constraint(_)).
+:- debug(lines).
+
+		 /*******************************
+		 *      Overall Game Logic      *
+		 *******************************/
+
+init_global.  % init for all chr for the server
+
+% return the tokenized html for the board
+rendered_result(S, Board) :-
+    b_setval(current_session, S),
+    phrase(html(\board), Board).
+
+mutate(Key, Result) :-
+    http_in_session(S), % grab in the http thread
+    do_in_chr_thread(alter_state(S, Key),
+                     rendered_result(S, Result)).
 
 
-make_player_inited(_S).  % session
+alter_state(S, Key) :-
+    begin_game(S),
+    chr_key(S, Key).
+
+
+% old stuff
+
+:- if(false).
+
+% leaving in case we drop the reload whole page, otherwise I'll fight
+% CORS again
+game_turn(Request) :-
+    http_read_json_dict(Request, Payload, [value_string_as(atom)]),
+    do_in_chr_thread(new_state(S, Payload),
+                     get_chr_response_dict(S, Response)),
+    format('Access-Control-Allow-Origin: *~n'),
+    reply_json_dict(Response).
+
+new_state(S, _Payload) :-
+    make_player_inited(S).
+%    act(S, Payload.action). TODO this may all go away
+
+get_chr_response_dict(S, Response) :-
+    get_state(S, Response).
+
+:- endif.
