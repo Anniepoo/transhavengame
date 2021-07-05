@@ -21,18 +21,23 @@
 main_page(Request) :-
     http_parameters(Request,
                     [
-                        key(Key, [default(0)])
+                        key(Key, [default(0), integer])
                     ]),
-    mutate(Key, Result),
+    mutate(Key),
+    print_session,
     reply_html_page(title('Trans Haven'),
-                    \haven_body(Result)).
+                    \haven_body).
 
-haven_body(Board) -->
+haven_body -->
     html([
         h1('Trans haven'),
-        \Board
+        \board
     ]).
 
-
+print_session :-
+     http_session_data(D),
+     debug(game(session), '~q', [D]),
+     fail.
+print_session.
 
 

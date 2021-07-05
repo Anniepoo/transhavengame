@@ -6,7 +6,7 @@
 :- use_module(library(http/http_session)).
 :- use_module(library(http/html_head)).
 
-:- use_module(game, [player_location/3, board_tile/3]).
+:- use_module(game, [player_location/2, board_tile/3]).
 
 board_size(40, 20). % NumCols, NumRows
 
@@ -18,10 +18,9 @@ board -->
     html_requires('/static/js/player.js'),
     { board_size(NumCols, NumRows),
       setof(X, between(1, NumCols, X), Row),
-      setof(Y-Row, between(1, NumRows, Y), Board),
-      gtrace
+      setof(Y-Row, between(1, NumRows, Y), Board)
     },
-    html([\rows(Board),\objects]).
+    html(div(class(board), [\rows(Board),\objects])).
 
 rows([]) --> [].
 rows([Y-Row |More]) -->
@@ -36,8 +35,7 @@ row(Y, [X | More]) -->
 
 
 objects -->
-    { b_getval(current_session, S),
-      player_location(S, X, Y) },
+    { player_location(X, Y) },
     html(img([class(object), style("left: ~dpx; top: ~dpx;"-[X,Y]), src("/static/img/player-r.png")], [])).
 
 

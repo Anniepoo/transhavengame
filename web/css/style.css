@@ -18,3 +18,9 @@ div.row {
     min-width: 9999px;
     height: 64px;
 }
+
+.board {
+    position: absolute;
+    top: 100px;
+    left: 0;
+}

@@ -1,152 +1,106 @@
 :- module(game, [
-  mutate/2,
-  create_chr_thread/0,
-  player_location/3,
+  mutate/1,
+  player_location/2,
   board_tile/3
 ]).
 
-:- use_module(library(chr)).
 :- use_module(library(http/http_session)).
-:- use_module(library(http/html_write)).
-:- use_module(board).
-
-:- chr_constraint
-  chr_key/2,
-  player_loc/3,   % S, X, Y
-  get_player_loc/3,
-  begin_game/1,
-  tile/4,
-  get_tile/4.
+:- use_module(symbolic_constant).
 
 
-player_loc(S, _, _) \ begin_game(S) <=> true.
+:- sym(startx, 128).
+:- sym(starty, 128).
+:- sym(cellw, 64).
+:- sym(cellh, 64).
+:- sym(numcols, 40).
+:- sym(numrows, 20).
+%arrow keys
+:- sym(up, 38).
+:- sym(down, 40).
+:- sym(right, 39).
+:- sym(left, 37).
+:- sym(plant, 0'P).
 
-begin_game(S) <=> player_loc(S, 128, 128).
 
-chr_key(S, 38), player_loc(S, X, Y) <=> NX is X + 64, player_loc(S, NX, Y).
-chr_key(_, _) <=> true.
+		 /*******************************
+		 *   Extract Info              *
+		 *******************************/
 
-player_loc(S, X, Y) \ get_player_loc(S, NX, NY) <=> NX = X, NY = Y.
-tile(S, R, C, T) \ get_tile(S, R, C, NT) <=> T = NT.
+player_location(X, Y) :-
+    http_session_data(player_loc(X, Y)).
+player_location($startx, $starty).
 
-player_location(S, X, Y) :-
-    get_player_loc(S, X, Y).
+player_locationrc(R, C) :-
+    player_location(X, Y),
+    R is 1 + floor(Y / $cellh),
+    C is 1 + floor(X / $cellw).
 
 board_tile(R, C, T) :-
-    b_getval(current_session, S),
-    get_tile(S, R, C, T).
+    http_session_data(tile(R, C, T)).
 board_tile(_, _, grass).
-
-
-		 /*******************************
-		 * Debug help                   *
-		 *******************************/
-debug_constraints(Where) :-
-    find_chr_constraint(X),
-    debug(constraint(Where), '~w', [X]),
-    fail.
-debug_constraints(_).
-
-		 /*******************************
-		 *  Thread Component            *
-		 *******************************/
-
-:- dynamic thread_name/2.
-
-create_chr_thread :-
-   retractall(thread_name(_,_)),
-   gensym(sub, Sub),
-   gensym(par, Par),
-   gensym(chr, Chr),
-   asserta(thread_name(sub, Sub)),
-   asserta(thread_name(par, Par)),
-   asserta(thread_name(chr, Chr)),
-   message_queue_create(_, [ alias(Sub) ]),
-   message_queue_create(_, [ alias(Par) ]),
-   thread_create((init_global, polling_sub), _, [ alias(Chr),
-           at_exit(debug(lines, 'CHR thread exited', []))]).
-
-polling_sub :-
-   % listen for new message on `sub` queue
-   thread_name(sub, Sub),
-   thread_get_message(Sub, sync(ActionCHR, ResultCHR)),
-   debug_constraints(polling_sub),
-   % do the actual constraint call
-   (   call(ActionCHR)
-   ;
-       debug(constraint(polling_sub),
-             'action constraint ~w failed unexpectedly~n',
-             [ActionCHR]),
-       gtrace
-   ),
-   debug_constraints(polling_sub),
-   % get the result using the get_foo pattern
-   strip_module(ResultCHR, M, P),
-   P =.. List,
-   append(StubList, [_], List),
-   append(StubList, [Result], CallMeList),
-   CallMe =.. CallMeList,
-   (   call(M:CallMe)
-   ;
-       debug(constraint(polling_sub),
-             'result constraint ~w failed unexpectedly~n',
-             [ResultCHR]),
-       gtrace
-   ),
-   !, % nondet calls not allowed
-   % send it back to the `par` message queue
-   thread_name(par, Par),
-   thread_send_message(Par, Result),
-   % repeat
-   polling_sub.
-
-:- meta_predicate do_in_chr_thread(0, 0).
-
-%!  do_in_chr_thread(+ActionCHR:chr_constraint,
-%!         +ResultCHR:chr_constraint) is det
-%
-%   queries ActionCHR in the chr thread, which must be
-%   grounded chr_constraint or prolog predicate,
-%   then calls ResultCHR, whose last argument must be unbound.
-%   the last argument will be bound as if a direct chr call
-%   was made.
-%
-% eg to touch the egg to the pan and then get the egg's costume do
-% do_in_chr_thread(touch(S, egg, pan), get_costume(S, egg, Costume))
-%
-% Note that these are effectively called in once/1
-%
-do_in_chr_thread(ActionCHR, ResultCHR) :-
-   ResultCHR =.. List,
-   append(_, [Result], List),
-   thread_name(sub, Sub),
-   thread_send_message(Sub, sync(ActionCHR, ResultCHR)),
-   thread_name(par, Par),
-   thread_get_message(Par, Result).
-
-:- debug(constraint(_)).
-:- debug(lines).
 
 		 /*******************************
 		 *      Overall Game Logic      *
 		 *******************************/
+mutate($up) :-
+    debug(game, 'move up', []),
+    player_location(X, Y),
+    NY is max(0, Y - $cellh),
+    http_session_retractall(player_loc(_, _)),
+    http_session_asserta(player_loc(X, NY)).
+mutate($right) :-
+    debug(game, 'move right', []),
+    player_location(X, Y),
+    NX is min($cellw * $numcols, X + $cellw),
+    http_session_retractall(player_loc(_, _)),
+    http_session_asserta(player_loc(NX, Y)).
+mutate($down) :-
+    debug(game, 'move down', []),
+    player_location(X, Y),
+    NY is min($cellh * $numrows, Y + $cellh),
+    http_session_retractall(player_loc(_, _)),
+    http_session_asserta(player_loc(X, NY)).
+mutate($left) :-
+    debug(game, 'move left', []),
+    player_location(X, Y),
+    NX is max(0, X - $cellw),
+    http_session_retractall(player_loc(_, _)),
+    http_session_asserta(player_loc(NX, Y)).
+mutate($plant) :-
+    debug(game, 'plant', []),
+    player_locationrc(R, C),
+    board_tile(R, C, T),
+    plant_on(R, C, T).
+mutate(K) :-
+    debug(game, 'move key ~w', [K]).
 
-init_global.  % init for all chr for the server
+plant_on(_, _, T) :-
+    \+ plantable_ground(T, _).
+plant_on(R, C, T) :-
+    plantable_ground(T, T1),
+    http_session_data(tile_alter_progress(R, C, 0)),
+    http_session_retractall(tile_alter_progress(R, C, _)),
+    http_session_retractall(tile(R, C, _)),
+    http_session_asserta(tile(R, C, T1)).
+plant_on(R, C, _) :-
+    http_session_data(tile_alter_progress(R, C, N)),
+    N > 0,
+    succ(NN, N),
+    http_session_retractall(tile_alter_progress(R, C, _)),
+    http_session_asserta(tile_alter_progress(R, C, NN)).
+plant_on(R, C, T) :-
+    plantable_ground(T, _),
+    \+ http_session_data(tile_alter_progress(R, C, _)),
+    plant_time(T, Time),
+    http_session_asserta(tile_alter_progress(R, C, Time)).
 
-% return the tokenized html for the board
-rendered_result(S, Board) :-
-    b_setval(current_session, S),
-    phrase(html(\board), Board).
+plantable_ground(grass, plowed).
+plantable_ground(plowed, planted).
 
-mutate(Key, Result) :-
-    http_in_session(S), % grab in the http thread
-    do_in_chr_thread(alter_state(S, Key),
-                     rendered_result(S, Result)).
+plant_time(grass, 3).
+plant_time(plowed, 2).
 
 
-alter_state(S, Key) :-
-    begin_game(S),
-    chr_key(S, Key).
 
 
 % old stuff
