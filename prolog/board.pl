@@ -9,7 +9,7 @@
 
 :- use_module(game, [player_location/2, board_tile/3]).
 
-board_size($numcols, $numrows). % NumCols, NumRows
+board_size($numcols, $numrows).
 
 :- html_resource(style, [virtual,
                          requires('/static/css/style.css')]).
@@ -33,7 +33,6 @@ row(Y, [X | More]) -->
     {board_tile(Y, X, T) },
     html(img(src="/static/img/"+T+".png")),
     row(Y, More).
-
 
 objects -->
     { player_location(X, Y) },

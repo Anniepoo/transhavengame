@@ -9,6 +9,8 @@
 sym(Name, Val) :-
     asserta(symbolic_constant(Name, Val)).
 
+% TODO move to map_subterm when it's in dev release
+%
 expand_constants(In, In) :-
     var(In),
     !.
