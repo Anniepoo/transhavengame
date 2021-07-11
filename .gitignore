@@ -27,6 +27,10 @@
 *.lib
 unity/transhavenunity3d/Library/
 
+# editor settings
+unity/transhavenunity3d/.vscode/
+unity/transhavenunity3d/Logs/
+
 # Executables
 *.exe
 *.out
