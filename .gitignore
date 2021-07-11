@@ -25,6 +25,7 @@
 *.la
 *.a
 *.lib
+unity/transhavenunity3d/Library/
 
 # Executables
 *.exe

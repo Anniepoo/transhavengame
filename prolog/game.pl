@@ -12,8 +12,8 @@
 :- sym(starty, 128).
 :- sym(cellw, 64).
 :- sym(cellh, 64).
-:- sym(numcols, 40).
-:- sym(numrows, 20).
+:- sym(numcols, 20).
+:- sym(numrows, 10).
 %arrow keys
 :- sym(up, 38).
 :- sym(down, 40).

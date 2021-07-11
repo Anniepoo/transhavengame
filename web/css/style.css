@@ -24,3 +24,7 @@ div.row {
     top: 100px;
     left: 0;
 }
+
+.help {
+    float: right;
+}

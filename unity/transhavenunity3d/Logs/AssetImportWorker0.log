@@ -13,11 +13,11 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-42697
+35653
 Successfully changed project path to: /home/anniepoo/transhavengame/unity/transhavenunity3d
 /home/anniepoo/transhavengame/unity/transhavenunity3d
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 38,88 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 58,75 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Initialize engine version: 2020.3.12f1 (b3b2c6512326)
 [Subsystems] Discovering subsystems at path /home/anniepoo/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Resources/UnitySubsystems
@@ -33,42 +33,42 @@ int_sprite GL_ARB_polygon_offset_clamp GL_ARB_post_depth_coverage GL_ARB_program
 L_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression_bptc GL_ARB_texture_compression_rgtc GL_ARB_texture_cube_map_array GL_ARB_texture_filter_anisotropic GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_64bit GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_ARB_vertex_type_2_10_10_10_rev GL_ARB_viewpor
 t_array GL_ATI_blend_equation_separate GL_ATI_texture_float GL_EXT_EGL_image_storage GL_EXT_EGL_sync GL_EXT_abgr GL_EXT_blend_equation_separate GL_EXT_demote_to_helper_invocation GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_pixel_buffer_object GL_EXT_polygon_offset_clamp GL_EXT_provoking_vertex GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shader_integer_mix GL_EXT_shader_samples_identical GL_EXT_texture_array GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_filter_anisotropic GL_EXT_texture_integer GL_EXT_texture_sRGB GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_shared_exponent GL_EXT_texture_snorm GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback G
 L_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_IBM_multimode_draw_arrays GL_INTEL_blackhole_render GL_INTEL_conservative_rasterization GL_INTEL_performance_query GL_INTEL_shader_atomic_float_minmax GL_INTEL_shader_integer_functions2 GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_KHR_context_flush_control GL_KHR_debug GL_KHR_no_error GL_KHR_parallel_shader_compile GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compression_astc_sliced_3d GL_MESA_framebuffer_flip_y GL_MESA_pack_invert GL_MESA_shader_integer_functions GL_MESA_texture_signed_rgba GL_NV_compute_shader_derivatives GL_NV_conditional_render GL_NV_copy_image GL_NV_depth_clamp GL_NV_fragment_shader_interlock GL_NV_packed_depth_stencil GL_NV_texture_barrier GL_OES_EGL_image GL_S3_s3tc
-OPENGL LOG: Creating OpenGL 4.6 graphics device ; Context level  <OpenGL 4.5> ; Context handle -859837104
+OPENGL LOG: Creating OpenGL 4.6 graphics device ; Context level  <OpenGL 4.5> ; Context handle 1181124144
 Initialize mono
 Mono path[0] = '/home/anniepoo/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Managed'
 Mono path[1] = '/home/anniepoo/Unity/Hub/Editor/2020.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/home/anniepoo/Unity/Hub/Editor/2020.3.12f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56224
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56203
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /home/anniepoo/Unity/Hub/Editor/2020.3.12f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0,000890 seconds.
+Registered in 0,001921 seconds.
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 31,53 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 58,81 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0,911 seconds
+- Completed reload, in  1,531 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0,001684 seconds.
+Registered in 0,003677 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0,37 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0,55 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0,908 seconds
+- Completed reload, in  1,293 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler after 0.00 seconds
-Refreshing native plugins compatible for Editor in 0,36 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Refreshing native plugins compatible for Editor in 0,62 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
-Unloading 1471 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 75,3 MB.
-System memory in use after: 75,3 MB.
+Unloading 1868 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 91,0 MB.
+System memory in use after: 91,0 MB.
 
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 1925.
-Total: 2,360765 ms (FindLiveObjects: 0,141165 ms CreateObjectMapping: 0,047768 ms MarkObjects: 1,999003 ms  DeleteObjects: 0,172051 ms)
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 2318.
+Total: 5,186810 ms (FindLiveObjects: 0,302279 ms CreateObjectMapping: 0,097380 ms MarkObjects: 3,816078 ms  DeleteObjects: 0,958220 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -81,118 +81,78 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/landblocks/blockguide.png
-  artifactKey: Guid(82c1198b2f3b530a280f792f95693626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/blockguide.png using Guid(82c1198b2f3b530a280f792f95693626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5a6a26348860d4aef6998d1dd014b82') in 0,028370 seconds 
-  Import took 0,030430 seconds .
+  path: Assets/landblocks/masterblock.blend
+  artifactKey: Guid(71b61d732d1325e75bc08184b5e4470d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/masterblock.blend using Guid(71b61d732d1325e75bc08184b5e4470d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '046a308846fa3eb8259cfcaeeba64de7') in 0,213709 seconds 
+  Import took 0,218184 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0,000142 seconds.
+  Time since last request: 0,000278 seconds.
+  path: Assets/landblocks/masterblock2.dae
+  artifactKey: Guid(32e777cd50bf2f2a69b4738a08b1ae05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/masterblock2.dae using Guid(32e777cd50bf2f2a69b4738a08b1ae05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5751ba5d9640649ba6ed64df54d5ffe') in 0,039450 seconds 
+  Import took 0,043954 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 186,454465 seconds.
+  path: Assets/landblocks/grass.blend
+  artifactKey: Guid(6789f3c653a03ea4f9f571fc02e57b53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/grass.blend using Guid(6789f3c653a03ea4f9f571fc02e57b53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b41dd7115d01579ff779f763e9bd5715') in 0,027951 seconds 
+  Import took 0,034902 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000405 seconds.
+  path: Assets/landblocks/grass2.dae
+  artifactKey: Guid(8e4ef2080dc956aa2baca39b1326b548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/grass2.dae using Guid(8e4ef2080dc956aa2baca39b1326b548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cef39429d9dbe90d7102a191d98790c3') in 0,022545 seconds 
+  Import took 0,027644 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 170,320806 seconds.
+  path: Assets/landblocks/masterblock.blend
+  artifactKey: Guid(71b61d732d1325e75bc08184b5e4470d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/masterblock.blend using Guid(71b61d732d1325e75bc08184b5e4470d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd021c7d97c8b06d4940f642a961d014f') in 0,017451 seconds 
+  Import took 0,021205 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000199 seconds.
   path: Assets/landblocks/masterblock.dae
   artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bff1a0837d89563214654ddbdba84413') in 0,089284 seconds 
-  Import took 0,091281 seconds .
+Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f78347d463418e05db1b94a62c5bb597') in 0,037015 seconds 
+  Import took 0,040937 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0,000213 seconds.
-  path: Assets/landblocks/blockguide.png
-  artifactKey: Guid(82c1198b2f3b530a280f792f95693626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/blockguide.png using Guid(82c1198b2f3b530a280f792f95693626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5a6a26348860d4aef6998d1dd014b82') in 0,006912 seconds 
-  Import took 0,009516 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 163,126775 seconds.
-  path: Assets/landblocks/masterblock.dae
-  artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14350ec3aee93334d49031ba35f70b7f') in 0,017177 seconds 
-  Import took 0,019777 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 647,039964 seconds.
-  path: Assets/landblocks/blockguide.png
-  artifactKey: Guid(82c1198b2f3b530a280f792f95693626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/blockguide.png using Guid(82c1198b2f3b530a280f792f95693626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc5fa368e19557db418d120b32d9e687') in 0,002968 seconds 
-  Import took 0,005169 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0,000154 seconds.
-  path: Assets/landblocks/masterblock.dae
-  artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa657a0a3b0f4624073c3cd20ae8253c') in 0,015729 seconds 
-  Import took 0,017895 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 241,418180 seconds.
-  path: Assets/landblocks/masterblock.dae
-  artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '083348064cb2d710bb22a81a25ddde53') in 0,018540 seconds 
-  Import took 0,022543 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0,007635 seconds.
-  path: Assets/landblocks/masterblock.dae
-  artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '083348064cb2d710bb22a81a25ddde53') in 0,016653 seconds 
-  Import took 0,020291 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 72,015981 seconds.
-  path: Assets/landblocks/masterblock.dae
-  artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc352cbb3d2d2db10124a63ac438d7c1') in 0,016163 seconds 
-  Import took 0,018777 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0,030755 seconds.
-  path: Assets/landblocks/masterblock.dae
-  artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc352cbb3d2d2db10124a63ac438d7c1') in 0,017186 seconds 
-  Import took 0,021232 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 56,855827 seconds.
-  path: Assets/landblocks/masterblock.dae
-  artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83cd4766b368d6d3824a562d2d51cb36') in 0,016722 seconds 
-  Import took 0,020015 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0,003862 seconds.
-  path: Assets/landblocks/masterblock.dae
-  artifactKey: Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/masterblock.dae using Guid(166b32254f5348f56adcad21a30457c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83cd4766b368d6d3824a562d2d51cb36') in 0,012787 seconds 
-  Import took 0,015267 seconds .
+  Time since last request: 0,000183 seconds.
+  path: Assets/landblocks/mbcollide.prefab
+  artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '773100cb1de4654b674673f3d1167c2d') in 0,006481 seconds 
+  Import took 0,011814 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0,001903 seconds.
+Registered in 0,003365 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0,40 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0,53 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0,768 seconds
+- Completed reload, in  1,196 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0,35 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0,57 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
-Unloading 1465 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 76,9 MB.
-System memory in use after: 76,9 MB.
+Unloading 1828 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89,3 MB.
+System memory in use after: 89,4 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1972.
-Total: 2,396541 ms (FindLiveObjects: 0,207483 ms CreateObjectMapping: 0,055497 ms MarkObjects: 2,038203 ms  DeleteObjects: 0,094439 ms)
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 2364.
+Total: 3,776087 ms (FindLiveObjects: 0,409437 ms CreateObjectMapping: 0,184833 ms MarkObjects: 3,052580 ms  DeleteObjects: 0,126770 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -205,103 +165,175 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1355,772852 seconds.
-  path: Assets/landblocks/mbcollide.prefab
-  artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32bb0df7bb9a1e67378e7de7bd9b0a16') in 0,019633 seconds 
-  Import took 0,021882 seconds .
+  Time since last request: 262,360008 seconds.
+  path: Assets/landblocks/grass.dae
+  artifactKey: Guid(9990aaea4f87e1c869a5e2cd6d509b1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/grass.dae using Guid(9990aaea4f87e1c869a5e2cd6d509b1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f7b5784bc115dc1a32cccb4b1813bf2') in 0,113195 seconds 
+  Import took 0,116667 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0,004951 seconds.
-  path: Assets/landblocks/mbcollide.prefab
-  artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32bb0df7bb9a1e67378e7de7bd9b0a16') in 0,001799 seconds 
-  Import took 0,003885 seconds .
+  Time since last request: 0,000132 seconds.
+  path: Assets/landblocks/grass.blend
+  artifactKey: Guid(6789f3c653a03ea4f9f571fc02e57b53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/grass.blend using Guid(6789f3c653a03ea4f9f571fc02e57b53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46b89586e575c93f2cdfc353273e244c') in 0,017507 seconds 
+  Import took 0,021646 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 16,556785 seconds.
+  Time since last request: 56,816209 seconds.
   path: Assets/landblocks/mbcollide.prefab
   artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8527961c23cdc676c82851f23d19e2b') in 0,036151 seconds 
-  Import took 0,038498 seconds .
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7dcc5658ccbecaa29eb06e74aa1e8afd') in 0,002268 seconds 
+  Import took 0,006327 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5,635104 seconds.
+  Time since last request: 34,249704 seconds.
   path: Assets/landblocks/mbcollide.prefab
   artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67e779b980d77aa0f7d056ddc72ff12a') in 0,004863 seconds 
-  Import took 0,007246 seconds .
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78745be6e37a639c4a15270fabe39040') in 0,010164 seconds 
+  Import took 0,014211 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1,493596 seconds.
+  Time since last request: 12,942344 seconds.
   path: Assets/landblocks/mbcollide.prefab
   artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2562a1fb97ef96d25eb1bedd6d860f69') in 0,004756 seconds 
-  Import took 0,007130 seconds .
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '231adf4adfa498c2493975e1620db908') in 0,005411 seconds 
+  Import took 0,010553 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2,710061 seconds.
+  Time since last request: 7,124076 seconds.
   path: Assets/landblocks/mbcollide.prefab
   artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00e81b40f287f518436c9fabd14d2f25') in 0,004919 seconds 
-  Import took 0,007192 seconds .
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be630e18bdcad8bc665a3f3a9bbbaf37') in 0,006058 seconds 
+  Import took 0,010391 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2,043150 seconds.
+  Time since last request: 4,480304 seconds.
   path: Assets/landblocks/mbcollide.prefab
   artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67a86dfff7c1e753937bbcbf5709695e') in 0,004779 seconds 
-  Import took 0,007176 seconds .
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dacddc774f39e7821b502c770ed73873') in 0,010134 seconds 
+  Import took 0,014495 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 22,251459 seconds.
+  Time since last request: 6,180633 seconds.
   path: Assets/landblocks/mbcollide.prefab
   artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f496f5ca36eb9a746bbc1ea4bd93deb0') in 0,005032 seconds 
-  Import took 0,007361 seconds .
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abe2fa674d8aa1486e3ff074e4c4c45e') in 0,006989 seconds 
+  Import took 0,012215 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0,003971 seconds.
+  Time since last request: 24,971801 seconds.
   path: Assets/landblocks/mbcollide.prefab
   artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f496f5ca36eb9a746bbc1ea4bd93deb0') in 0,004718 seconds 
-  Import took 0,006964 seconds .
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76a87fd3ffdbabc313925dcf7d04e371') in 0,008550 seconds 
+  Import took 0,012385 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 28,697267 seconds.
+  Time since last request: 8,537291 seconds.
   path: Assets/landblocks/mbcollide.prefab
   artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23a2663a17cad70be492793f043ea2fe') in 0,004912 seconds 
-  Import took 0,007535 seconds .
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '295dc4c9a8a1575a75f1f55c0a00bced') in 0,010186 seconds 
+  Import took 0,013985 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8,988043 seconds.
+  path: Assets/landblocks/mbcollide.prefab
+  artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '630e0196eec0e6c4a5e8e6012a7f8ca4') in 0,006743 seconds 
+  Import took 0,011023 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 97,997541 seconds.
+  path: Assets/landblocks
+  artifactKey: Guid(3ceda8b7cc46a9bc19f2e832594b0c59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks using Guid(3ceda8b7cc46a9bc19f2e832594b0c59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44d7f4339d5acdcf01cbe391d1b9f22a') in 0,000684 seconds 
+  Import took 0,004661 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,004018 seconds.
+  path: Assets/landblocks
+  artifactKey: Guid(3ceda8b7cc46a9bc19f2e832594b0c59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks using Guid(3ceda8b7cc46a9bc19f2e832594b0c59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44d7f4339d5acdcf01cbe391d1b9f22a') in 0,001122 seconds 
+  Import took 0,005181 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7,819462 seconds.
+  path: Assets/landblocks/raw
+  artifactKey: Guid(2d30f11e25d9f978685696d488d235ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/raw using Guid(2d30f11e25d9f978685696d488d235ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd85d2f2ab377883f57169032896c697f') in 0,001321 seconds 
+  Import took 0,005922 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11,273490 seconds.
+  path: Assets/landblocks/final
+  artifactKey: Guid(8e8c936c78b410104a8fa9d3535832cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/final using Guid(8e8c936c78b410104a8fa9d3535832cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66cf1f347d49c137e5bf1409ad7ce09a') in 0,001591 seconds 
+  Import took 0,005447 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15,428715 seconds.
+  path: Assets/landblocks/masterblock.blend
+  artifactKey: Guid(71b61d732d1325e75bc08184b5e4470d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/masterblock.blend using Guid(71b61d732d1325e75bc08184b5e4470d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '162f40864cd7613822b1d8f7d726fe45') in 0,037384 seconds 
+  Import took 0,041423 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000216 seconds.
+  path: Assets/landblocks/mbcollide.prefab
+  artifactKey: Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/mbcollide.prefab using Guid(80fd4b0f7fa814b84b885cf6d8029995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f1c6e637de915f77243b16a491e4bef') in 0,011550 seconds 
+  Import took 0,015434 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15,143290 seconds.
+  path: Assets/landblocks/masterblock.blend1
+  artifactKey: Guid(a630d8972dbede799b97d3e99c818241) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/masterblock.blend1 using Guid(a630d8972dbede799b97d3e99c818241) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11dd9d7b727ce90371ea74d866c51379') in 0,000961 seconds 
+  Import took 0,004894 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2,892228 seconds.
+  path: Assets/landblocks/grass.blend1
+  artifactKey: Guid(52785b240a7e559d19c139cab239f249) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/landblocks/grass.blend1 using Guid(52785b240a7e559d19c139cab239f249) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5232798ee63efdc302ffc9c6e1bddc31') in 0,001018 seconds 
+  Import took 0,005315 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0,001633 seconds.
+Registered in 0,002429 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 0,36 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0,45 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0,803 seconds
+- Completed reload, in  0,796 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0,33 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0,42 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
-Unloading 1465 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 77,0 MB.
-System memory in use after: 77,0 MB.
+Unloading 1828 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89,4 MB.
+System memory in use after: 89,4 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1976.
-Total: 2,135771 ms (FindLiveObjects: 0,130326 ms CreateObjectMapping: 0,038610 ms MarkObjects: 1,902437 ms  DeleteObjects: 0,063634 ms)
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 2368.
+Total: 2,401060 ms (FindLiveObjects: 0,206257 ms CreateObjectMapping: 0,055791 ms MarkObjects: 2,045864 ms  DeleteObjects: 0,092298 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -312,3 +344,4 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

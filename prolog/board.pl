@@ -5,10 +5,11 @@
 :- use_module(library(http/html_write)).
 :- use_module(library(http/http_session)).
 :- use_module(library(http/html_head)).
+:- use_module(symbolic_constant).
 
 :- use_module(game, [player_location/2, board_tile/3]).
 
-board_size(40, 20). % NumCols, NumRows
+board_size($numcols, $numrows). % NumCols, NumRows
 
 :- html_resource(style, [virtual,
                          requires('/static/css/style.css')]).

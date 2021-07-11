@@ -30,9 +30,23 @@ main_page(Request) :-
 
 haven_body -->
     html([
-        h1('Trans haven'),
+        div(class(banner), [
+                \help,
+                h1('Trans haven')
+            ]),
         \board
     ]).
+
+
+help -->
+    html(
+        div(class(help),
+            table([
+                tr([td('\u2190'), td('move left'), td('\u2192'), td('move right')]),
+                tr([td('\u2191'), td('move up'), td('\u2193'), td('move down')]),
+                tr([td(p), td('plant veggies')])
+            ]))
+    ).
 
 print_session :-
      http_session_data(D),
