@@ -20,7 +20,7 @@
 :- sym(right, 39).
 :- sym(left, 37).
 :- sym(plant, 0'P).
-
+:- sym(harvest, 0'H).
 
 		 /*******************************
 		 *   Extract Info              *
@@ -42,36 +42,46 @@ board_tile(_, _, grass).
 		 /*******************************
 		 *      Overall Game Logic      *
 		 *******************************/
-mutate($up) :-
+
+mutate(Cmd) :-
+    cmd_mutate(Cmd),
+    time_pass.
+
+cmd_mutate($up) :-
     debug(game, 'move up', []),
     player_location(X, Y),
     NY is max(0, Y - $cellh),
     http_session_retractall(player_loc(_, _)),
     http_session_asserta(player_loc(X, NY)).
-mutate($right) :-
+cmd_mutate($right) :-
     debug(game, 'move right', []),
     player_location(X, Y),
     NX is min($cellw * $numcols, X + $cellw),
     http_session_retractall(player_loc(_, _)),
     http_session_asserta(player_loc(NX, Y)).
-mutate($down) :-
+cmd_mutate($down) :-
     debug(game, 'move down', []),
     player_location(X, Y),
     NY is min($cellh * $numrows, Y + $cellh),
     http_session_retractall(player_loc(_, _)),
     http_session_asserta(player_loc(X, NY)).
-mutate($left) :-
+cmd_mutate($left) :-
     debug(game, 'move left', []),
     player_location(X, Y),
     NX is max(0, X - $cellw),
     http_session_retractall(player_loc(_, _)),
     http_session_asserta(player_loc(NX, Y)).
-mutate($plant) :-
+cmd_mutate($plant) :-
     debug(game, 'plant', []),
     player_locationrc(R, C),
     board_tile(R, C, T),
     plant_on(R, C, T).
-mutate(K) :-
+cmd_mutate($harvest) :-
+    debug(game, 'harvest', []),
+    player_locationrc(R, C),
+    board_tile(R, C, T),
+    harvest_on(R, C, T).
+cmd_mutate(K) :-
     debug(game, 'move key ~w', [K]).
 
 plant_on(_, _, T) :-
@@ -94,33 +104,70 @@ plant_on(R, C, T) :-
     plant_time(T, Time),
     http_session_asserta(tile_alter_progress(R, C, Time)).
 
+harvest_on(_, _, T) :-
+    \+ harvestable_ground(T, _).
+harvest_on(R, C, T) :-
+    harvestable_ground(T, T1),
+    http_session_data(tile_alter_progress(R, C, 0)),
+    http_session_retractall(tile_alter_progress(R, C, _)),
+    http_session_retractall(tile(R, C, _)),
+    http_session_asserta(tile(R, C, T1)).
+harvest_on(R, C, _) :-
+    http_session_data(tile_alter_progress(R, C, N)),
+    N > 0,
+    succ(NN, N),
+    http_session_retractall(tile_alter_progress(R, C, _)),
+    http_session_asserta(tile_alter_progress(R, C, NN)).
+harvest_on(R, C, T) :-
+    harvestable_ground(T, _),
+    \+ http_session_data(tile_alter_progress(R, C, _)),
+    plant_time(T, Time),
+    http_session_asserta(tile_alter_progress(R, C, Time)).
+
+
 plantable_ground(grass, plowed).
 plantable_ground(plowed, planted).
 
+harvestable_ground(veggie, grass).
+
 plant_time(grass, 3).
 plant_time(plowed, 2).
+plant_time(veggie, 2).
+
+time_pass :-
+    http_session_data(tile(R, C, Type)),
+    time_pass(R, C, Type),
+    fail.
+time_pass.
+
+time_pass(R, C, Type) :-
+    grows(Type, _, Becomes),
+    http_session_data(tile_alter_progress(R, C, 0)),
+    !,
+    debug(game(time), '~w at R~wC~w becomes ~w', [Type, R, C, Becomes]),
+    http_session_retractall(tile_alter_progress(R, C, _)),
+    http_session_retractall(tile(R, C, _)),
+    http_session_asserta(tile(R, C, Becomes)).
+time_pass(R, C, Type) :-
+    grows(Type, _, _),
+    http_session_data(tile_alter_progress(R, C, N)),
+    N > 0,
+    !,
+    debug(game(time), '~w at R~wC~w changes in ~w', [Type, R, C, N]),
+    succ(NN, N),
+    http_session_retractall(tile_alter_progress(R, C, _)),
+    http_session_asserta(tile_alter_progress(R, C, NN)).
+time_pass(R, C, Type) :-
+    \+ http_session_data(tile_alter_progress(R, C, _)),
+    grows(Type, Time, _),
+    !,
+    debug(game(time), '~w at R~wC~w will change in ~w', [Type, R, C, Time]),
+    http_session_asserta(tile_alter_progress(R, C, Time)).
+
+grows(planted, 10, veg1).
+grows(veg1, 20, veg2).
+grows(veg2, 20, veggie).
+grows(veggie, 30, wilted).
 
 
 
-
-% old stuff
-
-:- if(false).
-
-% leaving in case we drop the reload whole page, otherwise I'll fight
-% CORS again
-game_turn(Request) :-
-    http_read_json_dict(Request, Payload, [value_string_as(atom)]),
-    do_in_chr_thread(new_state(S, Payload),
-                     get_chr_response_dict(S, Response)),
-    format('Access-Control-Allow-Origin: *~n'),
-    reply_json_dict(Response).
-
-new_state(S, _Payload) :-
-    make_player_inited(S).
-%    act(S, Payload.action). TODO this may all go away
-
-get_chr_response_dict(S, Response) :-
-    get_state(S, Response).
-
-:- endif.
