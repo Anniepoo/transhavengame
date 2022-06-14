@@ -36,9 +36,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\zapme.cs" />
-     <Compile Include="Assets\Jammo-Character\Scripts\MovementInput.cs" />
      <Compile Include="Assets\Jammo-Character\Scripts\CharacterSkinController.cs" />
+     <Compile Include="Assets\Jammo-Character\Scripts\MovementInput.cs" />
+     <Compile Include="Assets\Scripts\zapme.cs" />
+     <Compile Include="Assets\Scripts\debugreport.cs" />
      <None Include="Assets\kenney\License.txt" />
     <Reference Include="UnityEngine">
         <HintPath>/home/anniepoo/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -610,6 +611,9 @@
     <Reference Include="Unity.2D.Tilemap.Extras">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -625,9 +629,6 @@
     <Reference Include="Unity.Sysroot.Linux_x86_64">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
@@ -636,6 +637,9 @@
     </Reference>
     <Reference Include="Unity.Toolchain.Linux-x86_64">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Toolchain.Linux-x86_64.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -652,26 +656,23 @@
     <Reference Include="UnityEngine.UI">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.SysrootPackage.Editor">
-        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Cinemachine">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder">
-        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder.Editor">
-        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
         <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.SysrootPackage.Editor">
+        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+        <HintPath>/home/anniepoo/transhavengame/unity/transhavenunity3d/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

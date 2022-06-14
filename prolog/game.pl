@@ -39,6 +39,14 @@ board_tile(R, C, T) :-
     http_session_data(tile(R, C, T)).
 board_tile(_, _, grass).
 
+%!  a_square(-R:integer, -C:integer) is nondet
+%
+%   enumerate the tiles
+%
+a_square(R, C) :-
+    between(1, $numcols, C),
+    between(1, $numrows, R).
+
 		 /*******************************
 		 *      Overall Game Logic      *
 		 *******************************/
@@ -135,7 +143,8 @@ plant_time(plowed, 2).
 plant_time(veggie, 2).
 
 time_pass :-
-    http_session_data(tile(R, C, Type)),
+    a_square(R, C),
+    board_tile(R, C, Type),
     time_pass(R, C, Type),
     fail.
 time_pass.
@@ -164,10 +173,10 @@ time_pass(R, C, Type) :-
     debug(game(time), '~w at R~wC~w will change in ~w', [Type, R, C, Time]),
     http_session_asserta(tile_alter_progress(R, C, Time)).
 
-grows(planted, 10, veg1).
-grows(veg1, 20, veg2).
-grows(veg2, 20, veggie).
-grows(veggie, 30, wilted).
+grows(planted, 2, veg1).
+grows(veg1, 4, veg2).
+grows(veg2, 4, veggie).
+grows(veggie, 3, wilted).
 
 
 
