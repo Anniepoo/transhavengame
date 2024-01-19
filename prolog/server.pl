@@ -48,7 +48,7 @@ game_turn(Request) :-
 		 *      Overall Game Logic      *
 		 *******************************/
 
-new_state(S, Payload) :-
+new_state(S, _Payload) :-
     make_player_inited(S).
 %    act(S, Payload.action). TODO this may all go away
 
@@ -116,6 +116,8 @@ polling_sub :-
    % repeat
    polling_sub.
 
+:- meta_predicate do_in_chr_thread(0, 0).
+
 %!  do_in_chr_thread(+ActionCHR:chr_constraint,
 %!         +ResultCHR:chr_constraint) is det
 %
@@ -129,7 +131,7 @@ polling_sub :-
 % do_in_chr_thread(touch(S, egg, pan), get_costume(S, egg, Costume))
 %
 % Note that these are effectively called in once/1
-%
+
 do_in_chr_thread(ActionCHR, ResultCHR) :-
    ResultCHR =.. List,
    append(_, [Result], List),
