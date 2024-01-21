@@ -24,6 +24,6 @@ row(Y, [X | More]) -->
     {(   http_session_data(board(Y, X, T))
     ;   T = grass
     )},
-    html(td(img(src=T+".png"))),
+    html(td(img(src("/static/img/"+T+".png")))),
     row(Y, More).
 
