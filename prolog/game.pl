@@ -34,7 +34,8 @@ player_location(S, X, Y) :-
 
 board_tile(R, C, T) :-
     b_getval(current_session, S),
-    get_tile(S, R, C, T).
+    get_tile(S, R, C, T),
+    ground(T).
 board_tile(_, _, grass).
 
 
@@ -64,12 +65,22 @@ create_chr_thread :-
    message_queue_create(_, [ alias(Sub) ]),
    message_queue_create(_, [ alias(Par) ]),
    thread_create((init_global, polling_sub), _, [ alias(Chr),
-           at_exit(debug(lines, 'CHR thread exited', []))]).
+           at_exit(restart_chr_thread)]).
+
+restart_chr_thread :-
+    thread_name(chr, Chr),
+    debug(lines, 'CHR thread ~w exited, restarting', [Chr]),
+    retractall(thread_name(chr, _)),
+    gensym(chr, NewChr),
+    asserta(thread_name(chr, NewChr)),
+    thread_create(polling_sub, _, [alias(NewChr), at_exit(restart_chr_thread)]).
 
 polling_sub :-
    % listen for new message on `sub` queue
    thread_name(sub, Sub),
+   debug(chr_thread, 'listening on ~q', [Sub]),
    thread_get_message(Sub, sync(ActionCHR, ResultCHR)),
+   debug(chr_thread, '~q heard sync(~q, ~q)', [Sub, ActionCHR, ResultCHR]),
    debug_constraints(polling_sub),
    % do the actual constraint call
    (   call(ActionCHR)
@@ -96,8 +107,8 @@ polling_sub :-
    !, % nondet calls not allowed
    % send it back to the `par` message queue
    thread_name(par, Par),
-   thread_send_message(Par, Result),
-   % repeat
+   debug(constraint(polling_sub), 'sending ~q result ~q', [Par, Result]),
+   thread_send_message(Par, Result),   % repeat
    polling_sub.
 
 :- meta_predicate do_in_chr_thread(0, 0).
@@ -120,12 +131,16 @@ do_in_chr_thread(ActionCHR, ResultCHR) :-
    ResultCHR =.. List,
    append(_, [Result], List),
    thread_name(sub, Sub),
+   debug(chr_thread, 'about to send sync(~q, ~q) to ~q', [ActionCHR, ResultCHR, Sub]),
    thread_send_message(Sub, sync(ActionCHR, ResultCHR)),
    thread_name(par, Par),
-   thread_get_message(Par, Result).
+   debug(chr_thread, 'listening for result on ~q', [Par]),
+   thread_get_message(Par, Result),
+   debug(chr_thread, '~w returned result ~w', [Par, Result]).
 
 :- debug(constraint(_)).
 :- debug(lines).
+:- debug(chr_thread).
 
 		 /*******************************
 		 *      Overall Game Logic      *

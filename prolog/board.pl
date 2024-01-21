@@ -18,8 +18,7 @@ board -->
     html_requires('/static/js/player.js'),
     { board_size(NumCols, NumRows),
       setof(X, between(1, NumCols, X), Row),
-      setof(Y-Row, between(1, NumRows, Y), Board),
-      gtrace
+      setof(Y-Row, between(1, NumRows, Y), Board)
     },
     html([\rows(Board),\objects]).
 
@@ -31,7 +30,7 @@ rows([Y-Row |More]) -->
 row(_, []) --> [].
 row(Y, [X | More]) -->
     {board_tile(Y, X, T) },
-    html(img(src="/static/img/"+T+".png")),
+    html(img(src("/static/img/"+T+".png"))),
     row(Y, More).
 
 
