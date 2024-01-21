@@ -1,0 +1,20 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: inline;
+    height: 64px;
+    width: 64px;
+}
+
+img.object {
+    position: absolute;
+}
+
+div.row {
+    min-width: 9999px;
+    height: 64px;
+}
